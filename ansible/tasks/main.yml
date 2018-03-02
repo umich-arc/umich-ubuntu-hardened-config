@@ -28,12 +28,3 @@
     mode: 0644
   with_fileglob:
     - ../files/common-*
-
-
-#  - name: Copy systems-support.cfg to /etc/nrpe.d/
-#    copy:
-#      src: "../files/systems-support.cfg"
-#      dest: "/etc/nrpe.d/"
-#      owner: nrpe
-#      group: nrpe
-#      mode: 0640
