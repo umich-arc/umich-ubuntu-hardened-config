@@ -28,3 +28,16 @@
     mode: 0644
   with_fileglob:
     - ../files/common-*
+
+- name: Copy ntp.conf to /etc/
+  copy:
+    src: "../files/ntp.conf"
+    dest: "/etc/"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Restart NTP
+  service:
+    name: ntp
+    state: restarted
