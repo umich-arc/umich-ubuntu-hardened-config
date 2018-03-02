@@ -1,0 +1,39 @@
+---
+# tasks file for umich
+- name: Install fail2ban packages
+  apt:
+    name: fail2ban
+    state: present
+
+- name: Install Kerberos packages
+  apt: name={{ item }} state=present
+  with_items:
+      - krb5-config
+      - libpam-krb5
+
+- name: Copy krb5.conf to /etc/
+  copy:
+    src: "../files/krb5.conf"
+    dest: "/etc/"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Copy pam config files to /etc/pam.d/
+  copy: 
+    src: "{{ item }}"
+    dest: /etc/pam.d/
+    owner: root
+    group: root
+    mode: 0644
+  with_fileglob:
+    - ../files/common-*
+
+
+#  - name: Copy systems-support.cfg to /etc/nrpe.d/
+#    copy:
+#      src: "../files/systems-support.cfg"
+#      dest: "/etc/nrpe.d/"
+#      owner: nrpe
+#      group: nrpe
+#      mode: 0640
