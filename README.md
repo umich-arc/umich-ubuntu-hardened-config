@@ -103,7 +103,7 @@ sudo nano /etc/sudoers
 
 16. Run the playbook
 ```
-ansible-playbook -K -i localhost, --key-file ~mirwin/id_rsa Ubuntu1604-CIS/test.yml
+ansible-playbook -K -i localhost, --key-file <<path to ssh key>> <<path to playbook.yml>>
 ```
 
 17. Configure NTP
